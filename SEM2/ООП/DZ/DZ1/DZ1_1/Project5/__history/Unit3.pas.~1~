@@ -1,0 +1,52 @@
+unit Unit3;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, Unit4, StdCtrls;
+
+type
+  TForm3 = class(TForm)
+    Image1: TImage;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+var
+  line1: Line;
+
+{$R *.dfm}
+
+procedure TForm3.Button1Click(Sender: TObject);
+begin
+Close;
+end;
+
+procedure TForm3.Image1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  Image1.Canvas.Brush.Color := clWhite;
+
+  if button = mbLeft then begin
+      line1 := line.init(x, y, Image1);
+      line1.draw;
+  end;
+  if button = mbRight then begin
+      Image1.Canvas.MoveTo(x,y);
+  end;
+
+
+end;
+
+end.

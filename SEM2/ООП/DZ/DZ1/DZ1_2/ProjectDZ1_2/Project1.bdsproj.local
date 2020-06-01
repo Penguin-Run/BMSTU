@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020.02.28 18:23:35.611.pas,C:\Users\User\Documents\Borland Studio Projects\Unit1.pas=C:\Users\User\Desktop\Ваня\Unit1.pas</Transaction>
+    <Transaction>2020.02.28 18:23:35.632.dfm,C:\Users\User\Documents\Borland Studio Projects\Unit1.dfm=C:\Users\User\Desktop\Ваня\Unit1.dfm</Transaction>
+    <Transaction>2020.02.28 18:23:42.354.pas,C:\Users\User\Documents\Borland Studio Projects\Unit2.pas=C:\Users\User\Desktop\Ваня\Unit2.pas</Transaction>
+    <Transaction>2020.02.28 18:23:45.090.bdsproj,C:\Users\User\Documents\Borland Studio Projects\Project1.bdsproj=C:\Users\User\Desktop\Ваня\Project1.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>

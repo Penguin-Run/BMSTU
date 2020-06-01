@@ -1,0 +1,3 @@
+/Users/Ivan/Desktop/LAB1/untitled/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/Ivan/Desktop/LAB1/untitled/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/Ivan/Desktop/LAB1/untitled/cmake-build-debug/CMakeFiles/untitled.dir

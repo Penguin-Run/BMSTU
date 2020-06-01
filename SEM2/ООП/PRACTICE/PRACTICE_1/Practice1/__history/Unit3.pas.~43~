@@ -1,0 +1,479 @@
+unit Unit3;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, StdCtrls, ExtCtrls;
+
+type
+  TForm3 = class(TForm)
+    StringGrid1: TStringGrid;
+    Button1: TButton;
+    Button2: TButton;
+    Edit1: TEdit;
+    Label1: TLabel;
+    Edit2: TEdit;
+    Label2: TLabel;
+    Edit3: TEdit;
+    Label3: TLabel;
+    Edit4: TEdit;
+    Label4: TLabel;
+    Label5: TLabel;
+    Edit5: TEdit;
+    Label6: TLabel;
+    Edit6: TEdit;
+    Label7: TLabel;
+    Edit7: TEdit;
+    Label8: TLabel;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
+    Button8: TButton;
+    Button9: TButton;
+    Image1: TImage;
+    Button10: TButton;
+    procedure Button10Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+
+
+
+  private
+
+  public
+
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+
+type
+date = record
+  year, month, day: integer;
+end;
+
+product = record
+  number, quantity, expDate: integer;
+  name: string[50];
+  date: date;
+end;
+
+f = file of product;
+
+var f1: f;
+    // glBuf: product;
+
+{$R *.dfm}
+
+{TForm3}
+// кнопка "Добавить товар"
+procedure TForm3.Button2Click(Sender: TObject);
+var buf: product;
+    code: integer;
+begin
+   // открытие файла для записи
+   AssignFile(f1, 'database.dat');
+   reset(f1);
+
+   // получение информации с полей о продукте для добавления в файл
+   val(Form3.Edit1.Text, buf.number, code);
+   buf.name := Form3.Edit2.Text;
+   val(Form3.Edit3.Text, buf.quantity, code);
+   val(Form3.Edit4.Text, buf.expDate, code);
+   val(Form3.Edit5.Text, buf.date.year, code);
+   val(Form3.Edit6.Text, buf.date.month, code);
+   val(Form3.Edit7.Text, buf.date.day, code);
+
+   Seek(f1, FileSize(f1)); // установка файлового указателя на конец файла
+   Write(f1, buf); // запись продукта в файл
+   CloseFile(f1); // закрытие файла
+
+   Form3.Button3Click(Form3); // вывести таблицу
+end;
+
+// кнопка "Показать все"
+procedure TForm3.Button3Click(Sender: TObject);
+var s1, s2, s3, s4, s5, s6, s7: string;
+    cnt: integer;
+    buf: product;
+begin
+  cnt := 1;
+
+  AssignFile(f1, 'database.dat');
+  reset(f1);
+
+  StringGrid1.RowCount := 2;
+
+  while not EOF(f1) do begin
+     Read(f1, buf);
+     cnt := cnt + 1;
+
+     str(buf.number, s1);
+     s2 := buf.name;
+     str(buf.quantity, s3);
+     str(buf.expDate, s4);
+     str(buf.date.year, s5);
+     str(buf.date.month, s6);
+     str(buf.date.day, s7);
+
+     StringGrid1.Cells[0, cnt] := s1;
+     StringGrid1.Cells[1, cnt] := s2;
+     StringGrid1.Cells[2, cnt] := s3;
+     StringGrid1.Cells[3, cnt] := s4;
+     StringGrid1.Cells[4, cnt] := s5;
+     StringGrid1.Cells[5, cnt] := s6;
+     StringGrid1.Cells[6, cnt] := s7;
+
+     StringGrid1.RowCount := StringGrid1.RowCount + 1; // добавляю пустую строку
+  end;
+
+  CloseFile(f1);
+end;
+
+// кнопка "Выйти"
+procedure TForm3.Button4Click(Sender: TObject);
+begin
+  Close;
+end;
+
+// кнопка "Удалить товар"
+procedure TForm3.Button5Click(Sender: TObject);
+var curPos, oldPos, cnt, delNum, code: integer;
+    buf, temp: product;
+begin
+  AssignFile(f1, 'database.dat');
+  reset(f1);
+
+  Seek(f1, filesize(f1)-1);
+  Truncate(f1);
+
+  CloseFile(f1);
+
+  Form3.Button3Click(Form3); // вывести таблицу
+end;
+
+// кнопка "Удалить все товары"
+procedure TForm3.Button6Click(Sender: TObject);
+begin
+  AssignFile(f1, 'database.dat'); // 'C:\Practice1\database.dat'
+  ReWrite(f1);
+  CloseFile(f1);
+
+  Form3.Button3Click(Form3); // вывести таблицу
+end;
+
+
+// кнопка "Товары, поступившие с указанной даты"
+procedure TForm3.Button7Click(Sender: TObject);
+var s1, s2, s3, s4, s5, s6, s7: string;
+    day, month, year, code, cnt: integer;
+    buf: product;
+begin
+  cnt := 1;
+  val(Form3.Edit5.Text, year, code);
+  val(Form3.Edit6.Text, month, code);
+  val(Form3.Edit7.Text, day, code);
+
+  StringGrid1.RowCount := 2;
+
+  AssignFile(f1, 'database.dat');
+  Reset(f1);
+  while not EOF(f1) do begin
+     Read(f1, buf);
+     if (buf.date.year > year) then begin
+        cnt := cnt + 1;
+
+        str(buf.number, s1);
+        s2 := buf.name;
+        str(buf.quantity, s3);
+        str(buf.expDate, s4);
+        str(buf.date.year, s5);
+        str(buf.date.month, s6);
+        str(buf.date.day, s7);
+
+        StringGrid1.Cells[0, cnt] := s1;
+        StringGrid1.Cells[1, cnt] := s2;
+        StringGrid1.Cells[2, cnt] := s3;
+        StringGrid1.Cells[3, cnt] := s4;
+        StringGrid1.Cells[4, cnt] := s5;
+        StringGrid1.Cells[5, cnt] := s6;
+        StringGrid1.Cells[6, cnt] := s7;
+
+        StringGrid1.RowCount := StringGrid1.RowCount + 1; // добавляю пустую строку
+     end else if (buf.date.year = year) then begin
+        if (buf.date.month > month) then  begin
+            cnt := cnt + 1;
+
+            str(buf.number, s1);
+            s2 := buf.name;
+            str(buf.quantity, s3);
+            str(buf.expDate, s4);
+            str(buf.date.year, s5);
+            str(buf.date.month, s6);
+            str(buf.date.day, s7);
+
+            StringGrid1.Cells[0, cnt] := s1;
+            StringGrid1.Cells[1, cnt] := s2;
+            StringGrid1.Cells[2, cnt] := s3;
+            StringGrid1.Cells[3, cnt] := s4;
+            StringGrid1.Cells[4, cnt] := s5;
+            StringGrid1.Cells[5, cnt] := s6;
+            StringGrid1.Cells[6, cnt] := s7;
+
+            StringGrid1.RowCount := StringGrid1.RowCount + 1; // добавляю пустую строку
+        end else if (buf.date.month = month) then begin
+            if (buf.date.day >= day) then begin
+                cnt := cnt + 1;
+
+                str(buf.number, s1);
+                s2 := buf.name;
+                str(buf.quantity, s3);
+                str(buf.expDate, s4);
+                str(buf.date.year, s5);
+                str(buf.date.month, s6);
+                str(buf.date.day, s7);
+
+                StringGrid1.Cells[0, cnt] := s1;
+                StringGrid1.Cells[1, cnt] := s2;
+                StringGrid1.Cells[2, cnt] := s3;
+                StringGrid1.Cells[3, cnt] := s4;
+                StringGrid1.Cells[4, cnt] := s5;
+                StringGrid1.Cells[5, cnt] := s6;
+                StringGrid1.Cells[6, cnt] := s7;
+
+                StringGrid1.RowCount := StringGrid1.RowCount + 1; // добавляю пустую строку
+            end;
+        end;
+     end;
+
+  end;
+
+  CloseFile(f1);
+end;
+
+// кнопка "Самый скоропортящийся товар"
+procedure TForm3.Button8Click(Sender: TObject);
+var s1, s2, s3, s4, s5, s6, s7: string;
+    cnt, minDay: integer;
+    buf: product;
+begin
+  cnt := 1;
+
+  AssignFile(f1, 'database.dat');
+  reset(f1);
+
+  StringGrid1.RowCount := 2;
+
+  minDay := 10000;
+  while not EOF(f1) do begin
+    Read(f1, buf);
+    if (buf.expDate < minDay) then minDay := buf.expDate;
+    
+  end;
+
+  Seek(f1, 0); // сместить указатель на начало файла
+  while not EOF(f1) do begin
+  Read(f1, buf);
+
+  if (buf.expDate = minDay) then begin
+     cnt := cnt + 1;
+
+     str(buf.number, s1);
+     s2 := buf.name;
+     str(buf.quantity, s3);
+     str(buf.expDate, s4);
+     str(buf.date.year, s5);
+     str(buf.date.month, s6);
+     str(buf.date.day, s7);
+
+     StringGrid1.Cells[0, cnt] := s1;
+     StringGrid1.Cells[1, cnt] := s2;
+     StringGrid1.Cells[2, cnt] := s3;
+     StringGrid1.Cells[3, cnt] := s4;
+     StringGrid1.Cells[4, cnt] := s5;
+     StringGrid1.Cells[5, cnt] := s6;
+     StringGrid1.Cells[6, cnt] := s7;
+
+     StringGrid1.RowCount := StringGrid1.RowCount + 1; // добавляю пустую строку
+  end;
+
+  end;
+
+  CloseFile(f1);
+end;
+
+// кнопка "Товары с истекающим сроком годности"
+procedure TForm3.Button9Click(Sender: TObject);
+var today, exp: date;
+    buf: product;
+    cnt: integer;
+    s1, s2, s3, s4, s5, s6, s7: string;
+begin
+  today.year := 2020; today.month := 3; today.day := 14;
+
+  cnt := 1;
+  AssignFile(f1, 'database.dat');
+  reset(f1);
+  StringGrid1.RowCount := 2;
+  while not EOF(f1) do begin
+    Read(f1, buf);
+
+    exp.year := buf.date.year;
+    exp.month := buf.date.month;
+    if (buf.date.day + buf.expDate) > 31 then begin
+      exp.month := exp.month + (buf.date.day + buf.expDate) div 31;
+      if exp.month > 12 then begin
+        exp.year := exp.year + exp.month div 12;
+        exp.month := exp.month mod 12;
+      end;
+
+      exp.day := (buf.date.day + buf.expDate) mod 31;
+    end else exp.day := (buf.date.day + buf.expDate);
+
+
+    // поиск тех, кто сегодня выходит из срока годности
+    if (exp.year = today.year) and (exp.month = today.month) and (exp.day = today.day) then begin
+         cnt := cnt + 1;
+
+         str(buf.number, s1);
+         s2 := buf.name;
+         str(buf.quantity, s3);
+         str(buf.expDate, s4);
+         str(buf.date.year, s5);
+         str(buf.date.month, s6);
+         str(buf.date.day, s7);
+
+         StringGrid1.Cells[0, cnt] := s1;
+         StringGrid1.Cells[1, cnt] := s2;
+         StringGrid1.Cells[2, cnt] := s3;
+         StringGrid1.Cells[3, cnt] := s4;
+         StringGrid1.Cells[4, cnt] := s5;
+         StringGrid1.Cells[5, cnt] := s6;
+         StringGrid1.Cells[6, cnt] := s7;
+
+         StringGrid1.RowCount := StringGrid1.RowCount + 1; // добавляю пустую строку
+    end;
+  end;
+  // if cnt = 4 then close;
+  
+
+  CloseFile(f1);
+end;
+
+procedure TForm3.FormCreate(Sender: TObject);
+begin
+  // Формирование шапки таблицы
+  StringGrid1.ColCount := 7; StringGrid1.RowCount := 2;
+  StringGrid1.RowHeights[1] := 0;
+  StringGrid1.FixedCols := 0; // убираю фиксированные столбцы
+  StringGrid1.Cells[0,0] := 'Партия'; StringGrid1.ColWidths[0] := 42;
+  StringGrid1.Cells[1,0] := 'Товар'; StringGrid1.ColWidths[1] := 80;
+  StringGrid1.Cells[2,0] := 'Количество';
+  StringGrid1.Cells[3,0] := 'Срок годности'; StringGrid1.ColWidths[3] := 80;
+  StringGrid1.Cells[4,0] := 'Год'; StringGrid1.ColWidths[4] := 30;
+  StringGrid1.Cells[5,0] := 'Месяц'; StringGrid1.ColWidths[5] := 37;
+  StringGrid1.Cells[6,0] := 'День'; StringGrid1.ColWidths[6] := 33;
+
+  // Формирование графика
+  Image1.Canvas.Brush.Color := clWhite;
+  Image1.Canvas.MoveTo(31,12);
+  Image1.Canvas.LineTo(25,6);
+  Image1.Canvas.MoveTo(19,12);
+  Image1.Canvas.LineTo(25,6);
+  Image1.Canvas.LineTo(25,260);
+  Image1.Canvas.LineTo(535,260);
+  Image1.Canvas.LineTo(529,254);
+  Image1.Canvas.MoveTo(535,260);
+  Image1.Canvas.LineTo(529,266);
+end;
+
+
+// кнопка "Построить график"
+procedure TForm3.Button10Click(Sender: TObject);
+var name, s1, s0: string;
+    i, dx, max: integer;
+    today: date;
+    buf: product;
+    a: array[1..7] of integer;
+  const xmax = 520;
+  const delx = 63; // сдвиг для отрисовки дат
+begin
+  today.year := 2020; today.month := 3; today.day := 14;
+  s0 := '20/03/';
+
+  dx := delx; // начальный сдвиг для отрисовки дат
+  // отрисовка дат на графике
+  for i := 1 to 7 do begin
+     str(today.day, s1);
+     Image1.Canvas.TextOut(xmax - dx - 23, 265, s0+s1);
+     Image1.Canvas.MoveTo(xmax - dx, 260);
+     Image1.Canvas.LineTo(xmax - dx, 255);
+     dx := dx + delx;
+     today.day := today.day - 1;
+  end;
+
+  // имя товара по которому будет строиться график
+  name := Form3.Edit2.Text;
+
+  for i := 1 to 7 do a[i] := 0;
+
+  AssignFile(f1, 'database.dat');
+  reset(f1);
+  // подсчет кол-ва поставок продукта за 7 дней
+  while not EOF(f1) do begin
+     Read(f1, buf);
+
+     today.day := 7;
+     if buf.name = name then begin
+        for i := 1 to 7 do begin
+            today.day := today.day + 1;
+            if buf.date.day = today.day then begin
+                a[i] := a[i] + buf.quantity;
+            end;
+        end;
+     end;
+  end;
+
+  // нахождение максимума среди поставок
+  max := -1;
+  for i := 1 to 7 do begin
+      if a[i] > max then max := a[i];
+  end;
+
+  // вывод линии графика
+  Image1.Canvas.MoveTo(25,260); // 25,260 - н.к. в пикселях
+  for i := 1 to 7 do begin
+
+  end;
+
+
+  CloseFile(f1);
+end;
+
+// кнопка "Сформировать файл"
+procedure TForm3.Button1Click(Sender: TObject);
+begin
+  AssignFile(f1, 'database.dat'); // 'C:\Practice1\database.dat'
+  ReWrite(f1);
+  CloseFile(f1);
+
+  Form3.Button3Click(Form3); // вывести таблицу
+end;
+
+
+
+end.

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ProjectId" id="1ZWuXe0lPYIx2GPxUvljmb0ex0L" />
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="untitled" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="untitled" TARGET_NAME="untitled" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="untitled" RUN_TARGET_NAME="untitled">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="909" height="286" key="GridCell.Tab.0.bottom" timestamp="1584967366578">
+      <screen x="0" y="23" width="2048" height="1049" />
+    </state>
+    <state width="909" height="286" key="GridCell.Tab.0.bottom/0.23.2048.1049@0.23.2048.1049" timestamp="1584967366578" />
+    <state width="909" height="286" key="GridCell.Tab.0.center" timestamp="1584967366577">
+      <screen x="0" y="23" width="2048" height="1049" />
+    </state>
+    <state width="909" height="286" key="GridCell.Tab.0.center/0.23.2048.1049@0.23.2048.1049" timestamp="1584967366577" />
+    <state width="909" height="286" key="GridCell.Tab.0.left" timestamp="1584967366577">
+      <screen x="0" y="23" width="2048" height="1049" />
+    </state>
+    <state width="909" height="286" key="GridCell.Tab.0.left/0.23.2048.1049@0.23.2048.1049" timestamp="1584967366577" />
+    <state width="909" height="286" key="GridCell.Tab.0.right" timestamp="1584967366578">
+      <screen x="0" y="23" width="2048" height="1049" />
+    </state>
+    <state width="909" height="286" key="GridCell.Tab.0.right/0.23.2048.1049@0.23.2048.1049" timestamp="1584967366578" />
+    <state x="1229" y="382" key="com.intellij.ide.util.TipDialog" timestamp="1584967217694">
+      <screen x="0" y="23" width="2048" height="1049" />
+    </state>
+    <state x="1229" y="382" key="com.intellij.ide.util.TipDialog/0.23.2048.1049@0.23.2048.1049" timestamp="1584967217694" />
+  </component>
+</project>

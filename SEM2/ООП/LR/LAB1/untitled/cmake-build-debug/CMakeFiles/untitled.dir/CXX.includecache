@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/Ivan/Desktop/LAB1/untitled/Nod.cpp
+Nod.h
+/Users/Ivan/Desktop/LAB1/untitled/Nod.h
+
+/Users/Ivan/Desktop/LAB1/untitled/Nod.h
+
+/Users/Ivan/Desktop/LAB1/untitled/main.cpp
+locale.h
+-
+stdio.h
+-
+Nod.h
+/Users/Ivan/Desktop/LAB1/untitled/Nod.h
+

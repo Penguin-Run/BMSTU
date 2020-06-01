@@ -1,0 +1,46 @@
+unit Unit4;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls;
+
+type Line = class
+  x: integer;
+  y: integer;
+  width: integer;
+  connect: TImage;
+
+  constructor init(xd, yd, widthd: integer; AImage: TImage);
+  procedure draw; virtual;
+end;
+
+Line_arrow = class(Line)
+   procedure draw; override;
+end;
+
+implementation
+
+constructor Line.init(xd, yd, widthd: Integer; AImage: TImage);
+begin
+  inherited Create;
+  x := xd;
+  y := yd;
+  width := widthd;
+  connect := AImage;
+end;
+
+procedure Line.draw;
+begin
+  self.connect.Canvas.Pen.Width := width;
+  self.connect.Canvas.LineTo(x, y);
+end;
+
+procedure Line_arrow.draw;
+begin
+   // connect.Canvas.Pen.
+   connect.Canvas.LineTo(x, y);
+end;
+
+end.
