@@ -1,0 +1,31 @@
+program Task1Part12;
+
+{$mode objfpc}{$H+}
+
+uses
+  SysUtils;
+  {$IFDEF UNIX}{$IFDEF UseCThreads}
+  cthreads,
+  {$ENDIF}{$ENDIF}
+  var x, y, y1, y2, y0, err_abs, err_ratio: single;
+begin
+  writeln('Введите x:');
+  readln(x);
+
+  y1 := ((exp(x)-exp(-x))/2); {sh x}
+  y2 := ((exp(x)+exp(-x))/2); {ch x}
+  y := sqr(y2) - sqr(y1);
+  Writeln('y1 = ', y1:20:16);
+  Writeln('y2 = ', y2:20:16);
+  Writeln('y = ', y:20:16);
+
+  y0 := 1; {по формуле, y должен быть равен 1}
+  err_abs := abs(y0-y);
+  err_ratio := (err_abs/abs(y0));
+  WriteLn('Абсолютная погрешность =', err_abs:20:16);
+  WriteLn('Относительная погрешность =', err_ratio:20:16);
+
+
+  Readln();
+end.
+

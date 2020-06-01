@@ -1,0 +1,42 @@
+type Ration = object
+	maxCal, curCal: integer;
+	procedure init(a, b: integer);
+	procedure getRation();
+	procedure newMeal(cal: integer);
+	function leftCal(): integer;
+end;
+
+procedure Ration.init;
+begin
+	maxCal := a;
+	curCal := b;
+end;
+
+procedure Ration.getRation;
+begin
+	writeln(curCal, '/', maxCal);
+end;
+
+procedure Ration.newMeal;
+begin
+	curCal := curCal + cal;
+end;
+
+function Ration.leftCal;
+begin
+	Result := maxCal - curCal;
+end;
+
+var r1: Ration;
+	a:integer;
+
+Begin
+	r1.init(2500, 600);
+	r1.getRation();
+	r1.newMeal(700);
+	r1.getRation();
+	writeln(r1.leftCal());
+
+  	readln;
+end.
+	

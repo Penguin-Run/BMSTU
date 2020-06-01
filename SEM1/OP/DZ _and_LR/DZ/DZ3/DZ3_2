@@ -1,0 +1,100 @@
+type Cylinder = object
+	diam, height: real;
+	procedure init(a, b: real);
+	procedure printVal();
+	function getVolume(): real;
+end;
+
+type Tank = object(cylinder)
+	mass: real;
+	procedure initT(a, b, c: real);
+	procedure printValT();
+	function waterMass(): real;
+	function wholeMass(): real;
+	function bottomPressure(): real;
+end;
+
+procedure Cylinder.init;
+begin
+	diam := a;
+	height := b;
+end;
+
+procedure Cylinder.printVal;
+begin	
+	writeln(diam, ' ', height);
+end;
+
+function Cylinder.getVolume;
+begin
+	Result := height*(3.14*(diam/2)*(diam/2));
+end;
+
+
+procedure Tank.initT;
+begin
+	init(a,b);
+	mass := c;
+end;
+
+procedure Tank.printValT;
+begin
+	writeln(diam:4:2, ' ', height:4:2, ' ', mass:4:2);
+end;
+
+function Tank.waterMass;
+var volume, wmass: real;
+begin
+	volume := Tank.getVolume();
+	wmass := 997*volume;
+	Result := wmass;
+end;
+
+function Tank.wholeMass;
+var a: real;
+begin
+	a := Tank.waterMass();
+	Result := a + mass;
+end;
+
+function Tank.bottomPressure;
+begin
+	Result := 9.8*997*height;
+end;
+
+
+var t1: Tank;
+
+Begin
+t1.initT(1, 1.5, 25);
+t1.printValT();
+writeln(t1.waterMass():4:2);
+writeln(t1.wholeMass():4:2);
+writeln(t1.bottomPressure():4:2);
+
+readln;
+end.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

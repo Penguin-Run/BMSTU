@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="C:\FPC\3.0.4\bin\i386-Win32\fpc.exe" Date="1262918680"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq -Fi\\Mac\Home\Desktop\LR2\lib\i386-win32 -Fu\\Mac\Home\Desktop\LR2\ -FU\\Mac\Home\Desktop\LR2\lib\i386-win32\ -FE\\Mac\Home\Desktop\LR2\ -o\\Mac\Home\Desktop\LR2\project1.exe project1.lpr"/>
+</CONFIG>

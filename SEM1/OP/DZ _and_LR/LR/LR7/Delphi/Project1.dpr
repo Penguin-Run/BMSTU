@@ -1,0 +1,31 @@
+program LR7;
+
+{$APPTYPE CONSOLE}
+
+uses SysUtils;
+
+var a, b, c, r: real;
+	d, e, f: real;
+
+procedure med(a, b, c: real; var d, e, f: real);
+begin
+	d := 0.5*sqrt(2*b*b - a*a + 2*c*c);
+	e := 0.5*sqrt(2*a*a - b*b + 2*c*c);
+	f := 0.5*sqrt(2*a*a - c*c + 2*b*b);
+end;
+
+begin
+	read(a, b, c);
+	d := 0.0; e := 0.0; f := 0.0;
+
+	med(a, b, c, d, e, f);
+  
+	med(d, e, f, a, b, c);
+
+	writeln(a:3:2);
+  writeln(b:3:2);
+  writeln(c:3:2);
+
+  readln(r);
+end.
+

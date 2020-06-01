@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2019/12/16 23:24:52.370.pas,\\Mac\Home\Documents\Borland Studio Projects\Unit1.pas=\\Mac\Home\Desktop\C_unit.pas</Transaction>
+    <Transaction>2019/12/16 23:24:52.370.dfm,\\Mac\Home\Documents\Borland Studio Projects\Unit1.dfm=\\Mac\Home\Desktop\C_unit.dfm</Transaction>
+    <Transaction>2019/12/16 23:25:26.925.pas,\\Mac\Home\Desktop\C_unit.pas=\\Mac\Home\Desktop\LR10_calc\C_unit.pas</Transaction>
+    <Transaction>2019/12/16 23:25:26.925.dfm,\\Mac\Home\Desktop\C_unit.dfm=\\Mac\Home\Desktop\LR10_calc\C_unit.dfm</Transaction>
+    <Transaction>2019/12/16 23:26:22.158.bdsproj,\\Mac\Home\Documents\Borland Studio Projects\Project1.bdsproj=\\Mac\Home\Desktop\LR10_calc\Culc.dpr</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,30 @@
+program DZ2_P4_main;
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils,
+  Unit1 in 'Unit1.pas';
+
+function f1(x: real):real;
+begin
+	f1 := sin(x*x);
+end;
+
+function f2(x: real):real;
+begin
+	f2 := (cos(x))/(sin(x));
+end;
+
+var M1, M2: real;
+	b: integer;
+
+begin
+	read(b);
+
+	MASSHTAB(b, f1, M1);
+	MASSHTAB(b, f2, M2);
+
+	writeln(M1);
+	writeln(M2);
+  readln;
+end.

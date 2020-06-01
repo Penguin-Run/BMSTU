@@ -1,0 +1,116 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+type Player = object
+	surname: string[50];
+	playnum: shortint;
+	role: shortint; {1 - forward, 2 - midfielder, 3 - defender, 4 - goalkeeper}
+	procedure init(a: string; b,c: shortint);
+	procedure printVal();
+	function getSurname():string;
+	function getPlaynum():shortint;
+	function getRole():shortint;
+end;
+
+type Team = object
+	name: string[50];
+	players: array[1..11] of player;
+	procedure initT(a: string; b: array of Player);
+	procedure printTeam();
+	function getGkNum():shortint;
+end;
+
+
+procedure Player.init;
+begin
+	surname := a;
+	playnum := b;
+	role := c;
+end;
+
+procedure Player.printVal;
+begin
+	writeln(surname, ' ', playnum, '  ', role);
+end;
+
+function Player.getSurname;
+begin
+	Result := surname;
+end;
+
+function Player.getPlaynum;
+begin
+	Result := playnum;
+end;
+
+function Player.getRole;
+begin
+	Result := role;
+end;
+
+
+procedure Team.initT;
+var i: integer;
+begin
+	name := a;
+
+	// players := b
+	for i:=1 to 4 do begin
+		players[i] := b[i-1];
+	end;
+end;
+
+procedure Team.printTeam;
+var i: integer;
+begin
+	for i:=1 to 4 do begin
+		writeln(players[i].surname);
+	end;
+end;
+
+function Team.getGkNum;
+var i: integer;
+begin
+	for i:=1 to 4 do begin
+		if (players[i].role = 4) then Result := players[i].playnum;
+	end;
+end;
+
+var f: array[1..4] of Player;
+    t: Team;
+
+begin
+  f[1].init('Messi', 18, 1);
+  f[2].init('Suarez', 21, 2);
+  f[3].init('Company', 9, 3);
+  f[4].init('De Gea', 7, 4);
+
+  f[1].printVal();
+  writeln(f[2].getSurname());
+  writeln(f[3].getPlaynum());
+  writeln(f[4].getRole());
+
+  t.initT('Veelvon', f);
+  writeln; t.printTeam();
+  writeln; writeln(t.getGkNum());
+
+  readln;
+end.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

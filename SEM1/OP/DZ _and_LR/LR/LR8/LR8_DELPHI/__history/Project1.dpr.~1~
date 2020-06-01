@@ -1,0 +1,68 @@
+program Project1;
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+type fi = file of integer;
+
+var  ff, fg, fh: fi;
+     num, i, j, k, nf, ng:integer;
+     af, ag, ah: array[1..1000] of integer;
+
+begin
+  { TODO -oUser -cConsole Main : Insert code here }
+  // creating initial files
+  assignFile(ff, 'C:\LR8_DELPHI\f.dat');
+  assignFile(fg, 'C:\LR8_DELPHI\g.dat');
+
+  reWrite(ff);
+  writeln('??????? ???-?? ????? ? ???? ????? ??? ????? F:');
+  readln(nf);
+  for i := 1 to nf do begin
+    read(num);
+    write(ff, num);
+  end;
+  close(ff);
+
+  reWrite(fg);
+  writeln('??????? ???-?? ????? ? ???? ????? ??? ????? G:');
+  readln(ng);
+  for i := 1 to ng do begin
+    read(num);
+    write(fg, num);
+  end;
+  close(fg);
+
+  // sorting
+  reSet(ff);
+  reSet(fg);
+  for i := 1 to nf do begin
+    read(ff, af[i]);
+  end;
+
+  for i := 1 to ng do begin
+    read(fg, ag[i]);
+  end;
+
+  k := 1;
+  for i := 1 to nf do begin
+    for j := 1 to ng do begin
+       if (af[i] <> ag[j]) then begin
+          ah[k] := af[i];
+          ink(k);
+       end;
+    end;
+  end;
+  close(ff);
+  close(fg);
+  // writing in H
+  assignFile(fh, 'C:\LR8_DELPHI\h.dat');
+  reWrite(fh);
+  for i := 1 to k do begin
+    write(fh, ah[i]);
+  end;
+  close(fh);
+
+
+end.

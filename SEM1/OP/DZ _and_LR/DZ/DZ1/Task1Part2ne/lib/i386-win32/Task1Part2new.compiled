@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="C:\FPC\3.0.4\bin\i386-Win32\fpc.exe" Date="1262918680"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq &quot;-Fi\\Mac\Home\Desktop\                  \МГТУ им.Баумана\ОП\ДЗ1\Task1Part2ne\lib\i386-win32&quot; &quot;-Fu\\Mac\Home\Desktop\                  \МГТУ им.Баумана\ОП\ДЗ1\Task1Part2ne\&quot; &quot;-FU\\Mac\Home\Desktop\                  \МГТУ им.Баумана\ОП\ДЗ1\Task1Part2ne\lib\i386-win32\&quot; &quot;-FE\\Mac\Home\Desktop\                  \МГТУ им.Баумана\ОП\ДЗ1\Task1Part2ne\&quot; &quot;-o\\Mac\Home\Desktop\                  \МГТУ им.Баумана\ОП\ДЗ1\Task1Part2ne\Task1Part2new.exe&quot; Task1Part2new.lpr"/>
+  <Complete Value="False"/>
+</CONFIG>

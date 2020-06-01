@@ -1,0 +1,53 @@
+﻿unit C_unit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Edit1: TEdit;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+  var Sum:real;
+      operation:char='@';
+
+procedure operate;
+var s:string;
+     code:integer;
+     n:real;
+begin
+  s:=Form1.Edit1.text;  {  читаем сроку из параметра text Edit1}
+  Form1.Edit1.clear;   {  очищаем Edit1}
+  val(s,n,code);  {  преобразуем строку в число}
+  case operation of        { выполняем операцию}
+       '@': sum:=n;
+       '+': sum:=sum+n;
+       '-': sum:=sum-n;
+       '*': sum:=sum*n;
+       '/': sum:=sum/n;
+  end;
+end;
+
+
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="2">
+      <Unit0>
+        <Filename Value="DZ4_P4_main.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="5"/>
+        <CursorPos X="32" Y="15"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="dz2_p4_unit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="DZ2_P4_unit"/>
+        <EditorIndex Value="1"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit1>
+    </Units>
+    <JumpHistory Count="13" HistoryIndex="12">
+      <Position1>
+        <Filename Value="DZ4_P4_main.lpr"/>
+        <Caret Line="20" Column="37"/>
+      </Position1>
+      <Position2>
+        <Filename Value="dz2_p4_unit.pas"/>
+        <Caret Line="3" Column="8"/>
+      </Position2>
+      <Position3>
+        <Filename Value="dz2_p4_unit.pas"/>
+        <Caret Line="7" Column="51"/>
+      </Position3>
+      <Position4>
+        <Filename Value="DZ4_P4_main.lpr"/>
+        <Caret Line="7" Column="37"/>
+      </Position4>
+      <Position5>
+        <Filename Value="DZ4_P4_main.lpr"/>
+        <Caret Line="11" Column="16" TopLine="2"/>
+      </Position5>
+      <Position6>
+        <Filename Value="DZ4_P4_main.lpr"/>
+        <Caret Line="27" Column="18" TopLine="5"/>
+      </Position6>
+      <Position7>
+        <Filename Value="dz2_p4_unit.pas"/>
+        <Caret Line="17" Column="3"/>
+      </Position7>
+      <Position8>
+        <Filename Value="DZ4_P4_main.lpr"/>
+        <Caret Line="27" Column="16" TopLine="5"/>
+      </Position8>
+      <Position9>
+        <Filename Value="DZ4_P4_main.lpr"/>
+        <Caret Line="26" Column="14" TopLine="5"/>
+      </Position9>
+      <Position10>
+        <Filename Value="DZ4_P4_main.lpr"/>
+        <Caret Line="25" Column="28" TopLine="5"/>
+      </Position10>
+      <Position11>
+        <Filename Value="DZ4_P4_main.lpr"/>
+        <Caret Line="26" Column="14" TopLine="5"/>
+      </Position11>
+      <Position12>
+        <Filename Value="DZ4_P4_main.lpr"/>
+        <Caret Line="13" Column="10"/>
+      </Position12>
+      <Position13>
+        <Filename Value="DZ4_P4_main.lpr"/>
+        <Caret Line="26" Column="14" TopLine="5"/>
+      </Position13>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

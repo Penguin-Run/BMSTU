@@ -1,0 +1,47 @@
+program DZ2_P4_main;
+// does not working
+uses 
+	SysUtils;
+    {    
+function f1(x: real):real;
+function f2(x: real):real;
+}
+
+type fx = function(x: real):real;
+
+var M1, M2: real;
+	b: integer;
+    
+function f1(x: real):real;
+begin
+	f1 := sin(x*x);
+end;
+
+function f2(x: real):real;
+begin
+	f2 := (cos(x))/(sin(x));
+end;
+
+procedure MASSHTAB(b: integer; f: fx; var M: real);
+var i, max: real;
+begin
+	i := 1.0;
+	max := -1000.0;
+	while (i < 2) do begin
+		if (f(i) > max) then max := f(i);
+		i := i + 0.1;
+	end;
+
+	M := b/max;
+end;
+
+begin
+	read(b);
+
+	MASSHTAB(b, f1, M1);
+	MASSHTAB(b, f2, M2);
+
+	writeln(M1);
+	writeln(M2);
+end.
+

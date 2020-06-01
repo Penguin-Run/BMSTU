@@ -1,0 +1,60 @@
+type tel = ^el;
+	 el = record
+	 	prev: tel;
+	 	num: real;
+	 	next: tel;
+	 end;
+
+var first, last, p, q: tel;
+	num: real;
+    i, n: integer;
+
+begin
+	readln(n);
+
+	first := nil;
+	last := nil;
+	q := nil;
+	p := nil;
+
+	read(num);
+	new(first);
+
+	first^.num := num;
+	first^.prev := nil;
+	p := first;
+
+	for i:=1 to n-1 do begin
+		read(num);
+		new(q);
+
+		p^.next := q;
+		q^.num := num;
+		q^.prev := p;
+		q^.next := nil;
+		p := q;
+	end;
+	last := q;
+
+	p := first; q := last; 
+	while (q <> nil) do begin
+		write(abs(p^.num - q^.num):3:2, ' ');
+		p := p^.next;
+		q := q^.prev;
+	end;
+
+	// free up memory
+	p := first;
+	while (p <> nil) do begin
+		q := p;
+		dispose(p);
+		p := q^.next;
+	end;
+end.
+
+
+
+
+
+
+
